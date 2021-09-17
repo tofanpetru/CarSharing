@@ -1,0 +1,4 @@
+For Error: 'node-sass' version X.0.0 is incompatible with ^4.0.0
+
+npm uninstall node-sass
+npm install sass --save-dev

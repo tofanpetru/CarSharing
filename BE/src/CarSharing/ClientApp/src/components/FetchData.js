@@ -18,9 +18,13 @@ export class FetchData extends Component {
       <table className='table table-striped' aria-labelledby="tabelLabel">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Title</th>
+            <th>Data masinii</th>
+            <th>Titlul masinii</th>
+            <th>Transmisia</th>
+            <th>Culoarea</th>
+            <th>Pret pe zi</th>
             <th>Brand</th>
+
           </tr>
         </thead>
         <tbody>
@@ -28,8 +32,10 @@ export class FetchData extends Component {
               <tr key={car.publishDate}>
               <td>{car.publishDate}</td>
               <td>{car.title}</td>
-              <td>{car.carbrand}</td>
-
+              <td>{car.transmission}</td>
+              <td>{car.color}</td>
+              <td>{car.pricePerDay}</td>
+              <td>{car.carBrand}</td>
             </tr>
           )}
         </tbody>
