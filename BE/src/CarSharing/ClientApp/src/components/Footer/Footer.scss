@@ -1,0 +1,62 @@
+﻿.footer-container {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    padding: 50px 0px;
+    margin-top: 80px;
+    background-color: #F2FFFF;
+
+    .logo {
+        img {
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+    }
+
+    .contacts {
+        h2 {
+            font-family: Montserrat;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+
+        p {
+            font-family: Montserrat;
+            font-weight: normal;
+            font-size: 18px;
+            margin-bottom: 5px;
+
+            a {
+                text-decoration: none;
+                color: black;
+
+                &:Hover {
+                    color: #02AAB0;
+                }
+            }
+        }
+    }
+
+    .social {
+        h2 {
+            font-family: Montserrat;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+    }
+}
