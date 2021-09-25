@@ -1,9 +1,11 @@
 ﻿using Infrastructure.Persistence;
+using System.Collections.Generic;
 
 namespace Infrastructure.Repository.Interfaces
 {
     public interface ICarRepository : IRepository<Car>
     {
-        public string FindCarPostByTitle(string title);
+        string FindCarPostByTitle(string title);
+        IEnumerable<Car> GetLastThreeAvalableCars();
     }
 }

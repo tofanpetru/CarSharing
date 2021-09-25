@@ -16,6 +16,7 @@ namespace Domain.Entities
         public DateTime PublishDate { get; set; }
         [DataType(DataType.ImageUrl)]
         public string CarImage { get; set; }
+        public int Seats { get; set; }
         [Required, Column(TypeName = "decimal(18,4)")]
         public decimal PricePerDay { get; set; }
         [DataType(DataType.DateTime)]
@@ -31,5 +32,6 @@ namespace Domain.Entities
         public virtual ICollection<Category> Categories { get; set; }
         [Required]
         public bool IsAvalable { get; set; }
+        public int Kilometers { get; set; }
     }
 }

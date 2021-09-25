@@ -22,7 +22,7 @@ export default class SimpleSlider extends Component {
                 <Slider {...settings}>
                     <div>
                         <div className="image-container">
-                            <img src={Slider1} />
+                            <img src={Slider1} alt="slider image"/>
                             <div class="centered-text">
                                 <p>Reserve now</p>
                             </div>
@@ -33,7 +33,7 @@ export default class SimpleSlider extends Component {
                     </div>
                     <div>
                         <div className="image-container">
-                            <img src={Slider1} />
+                            <img src={Slider1} alt="slider image"/>
                             <div class="centered-text">
                                 <p>Reserve now</p>
                             </div>

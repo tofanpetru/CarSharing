@@ -25,27 +25,27 @@ export default class Steps extends Component {
 
                     <div className="steps">
                         <div className="step1">
-                            <img src={Car1} />
+                            <img src={Car1} alt="car1" />
                             <p className="title">Choose a car</p>
                             <p className="description">Select the vehicle using our catalogues.</p>
                     </div>
 
                     <div className="step2">
-                        <img src={Curved} />
+                        <img src={Curved} alt="curved" />
                     </div>
 
                     <div className="step3">
-                        <img src={Booking1} />
+                        <img src={Booking1} alt="booking1" />
                         <p className="title">Make a booking</p>
                         <p className="description">Enter your name and booking details.</p>
                     </div>
 
                     <div className="step2">
-                        <img src={Curved} />
+                        <img src={Curved} alt="curved" />
                     </div>
 
                     <div className="step5">
-                        <img src={Drive1} />
+                        <img src={Drive1} alt="drive1" />
                         <p className="title">Enjoy your ride</p>
                         <p className="description">Enjoy your trip and our good servise!</p>
                     </div>

@@ -10,6 +10,8 @@ namespace Application
         {
             CreateMap<AllCarsDTO, Car>(MemberList.Source).ForPath(dest => dest.CarBrand.Name, src => src.MapFrom(i => i.CarBrand))
                 .ReverseMap();
+
+            CreateMap<HomePageCarsDTO, Car>().ReverseMap();
         }
     }
 }

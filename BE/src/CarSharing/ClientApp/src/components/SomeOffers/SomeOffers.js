@@ -1,90 +1,63 @@
-﻿import React, { Component } from "react";
+﻿import React, { Component } from 'react';
 import './SomeOffers.scss';
-import Audi from '../Images/Audi.png';
-import Bmw from '../Images/Bmw.png';
 import Vector from '../Images/Vector.png';
-
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+export default class SomeOffers extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: []
+        };
+    }
 
-export default class SomeOffers extends Component {
+    componentDidMount() {
+        fetch("api/getHomePageCars")
+            .then((res) => res.json())
+            .then(
+                (data) => {
+                    this.setState({
+                        data: data
+                    });
+                },
+                (error) => {
+                    console.log(error)
+                }
+            );
+    }
+
     render() {
-
+        const { data } = this.state;
         return (
             <section className="some-offers">
                 <h2> Some offers </h2>
 
                 <div className="offers-container">
-                    <div className="car-container">
-                        <div className="image-container">
-                        <img src={ Audi }/>
-                        </div>
-                        <p className="car-title">Audi Q4 2017</p>
-                        <div className="caracteristics">
-                            <div >
-                                <p>Automatic</p>
-                                <p>140 000 km</p>
+                    {data.map(car => 
+                        <div className="car-container">
+                            <div className="image-container">
+                                <img src={car.carImage} alt={car.title} />
                             </div>
-                            <div>
-                                <p>Black</p>
-                                <p>5 seats</p>
+                            <p className="car-title">{car.title}</p>
+                            <div className="caracteristics">
+                                <div >
+                                    <p>{car.transmission}</p>
+                                    <p>{car.kilometers} km</p>
+                                </div>
+                                <div>
+                                    <p>{car.color}</p>
+                                    <p>{car.seats} seats</p>
+                                </div>
                             </div>
-                        </div>
-                        <p className="price">
-                            45 € per day
-                        </p>
-                        <div className="price-button">
-                            <button type="button">Reserve now <img src={Vector} /></button>
-                        </div>
-                    </div>
-
-                    <div className="car-container">
-                        <div className="image-container">
-                            <img src={Bmw} />
-                        </div>
-                        <p className="car-title">Audi Q4 2017</p>
-                        <div className="caracteristics">
-                            <div >
-                                <p>Automatic</p>
-                                <p>140 000 km</p>
-                            </div>
-                            <div>
-                                <p>Black</p>
-                                <p>5 seats</p>
+                            <p className="price">
+                                {car.pricePerDay} $
+                            </p>
+                            <div className="price-button">
+                                <button type="button">Reserve now <img src={Vector} alt="right arrow" /></button>
                             </div>
                         </div>
-                        <p className="price">
-                            45 € per day
-                        </p>
-                        <div className="price-button">
-                            <button type="button">Reserve now <img src={Vector} /></button>
-                        </div>
-                    </div>
-
-                    <div className="car-container">
-                        <div className="image-container">
-                            <img src={Audi} />
-                        </div>
-                        <p className="car-title">Audi Q4 2017</p>
-                        <div className="caracteristics">
-                            <div >
-                                <p>Automatic</p>
-                                <p>140 000 km</p>
-                            </div>
-                            <div>
-                                <p>Black</p>
-                                <p>5 seats</p>
-                            </div>
-                        </div>
-                        <p className="price">
-                            45 € per day
-                        </p>
-                        <div className="price-button">
-                            <button type="button">Reserve now <img src={Vector} /></button>
-                        </div>
-                    </div>
+                    )}
                 </div>
             </section>
         );
