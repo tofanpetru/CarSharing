@@ -1,14 +1,13 @@
 ﻿using Application.Interfaces;
 using Domain.Entities;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace Presentation.Controllers
 {
-    [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Produces("application/json")]
+    [Route("api")]
     public class CarController : ControllerBase
     {
         private readonly ICarManager _carManager;
@@ -18,8 +17,8 @@ namespace Presentation.Controllers
             _carManager = carManager;
         }
 
-        [HttpGet]
-        public IEnumerable<AllCarsDTO> Get()
+        [HttpGet("GetAllCars")]
+        public IEnumerable<AllCarsDTO> GetAllCars()
         {
             try
             {
@@ -27,7 +26,19 @@ namespace Presentation.Controllers
             }
             catch
             {
+                return null;
+            }
+        }
 
+        [HttpGet("GetHomePageCars")]
+        public IEnumerable<HomePageCarsDTO> GetHomePageCars()
+        {
+            try
+            {
+                return _carManager.GetLastThreeAvalableCars();
+            }
+            catch
+            {
                 return null;
             }
         }

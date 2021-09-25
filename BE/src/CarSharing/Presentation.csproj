@@ -24,9 +24,22 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\NewFolder\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\NewFolder\**" />
+    <EmbeddedResource Remove="ClientApp\src\NewFolder\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\NewFolder\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\src\Pages\Error.cshtml" />
+    <Content Include="ClientApp\src\Pages\Shared\_Layout.cshtml" />
+    <Content Include="ClientApp\src\Pages\Shared\_LoginPartial.cshtml" />
+    <Content Include="ClientApp\src\Pages\Shared\_ValidationScriptsPartial.cshtml" />
+    <Content Include="ClientApp\src\Pages\_ViewImports.cshtml" />
+    <Content Include="ClientApp\src\Pages\_ViewStart.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
