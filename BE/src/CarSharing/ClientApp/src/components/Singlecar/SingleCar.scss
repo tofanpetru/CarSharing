@@ -1,0 +1,105 @@
+﻿.single-car {
+    background: linear-gradient(270.38deg, rgba(233, 254, 255, 0.2) 17.57%, rgba(11, 120, 248, 0.16154) 73.96%, rgba(250, 255, 255, 0.16) 96.83%);
+    margin-top: 20px;
+
+
+    .singlecar-container {
+        width: 70%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+
+        .car-image {
+
+
+            img {
+                width: 550px;
+                height: 350px;
+            }
+        }
+
+        .car-info {
+            h2 {
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 36px;
+            }
+
+            .available {
+                font-family: Montserrat;
+                font-weight: normal;
+                font-size: 24px;
+                margin: 20px 0px 0px 0px;
+            }
+
+            .per-day {
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 24px;
+            }
+
+            span {
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 48px;
+                color: #02AAB0;
+                margin-left: 10px;
+            }
+
+            p {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}
+
+.general-container {
+    .general-info {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .blue-line {
+            display: flex;
+            justify-content: center;
+
+            div {
+                width: 120px;
+                height: 10px;
+                border-bottom: 3px solid #02AAB0;
+            }
+        }
+
+        .general-text {
+            h2 {
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 24px;
+            }
+        }
+
+        .car-details {
+            display: flex;
+            margin-top: 40px;
+
+            div {
+                width: 200px;
+                text-align: center;
+
+                h3 {
+                    font-family: Montserrat;
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+
+                p {
+                    font-family: Montserrat;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
