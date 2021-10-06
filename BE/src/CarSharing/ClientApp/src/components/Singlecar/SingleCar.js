@@ -1,7 +1,6 @@
 ﻿import React, { Component } from "react";
 import './SingleCar.scss';
 import Audi from '../Images/Audi.png';
-import { useState } from 'react';
 
 export default class SingleCar extends Component {
     constructor(props) {
@@ -12,7 +11,7 @@ export default class SingleCar extends Component {
     }
 
     componentDidMount() {
-        fetch("api/getHomePageCars")
+        fetch("api/Car/Details/1")
             .then((res) => res.json())
             .then(
                 (data) => {
@@ -31,24 +30,21 @@ export default class SingleCar extends Component {
         const { data } = this.state;
         return (
             <div className="general-container">
-                {/*  {data.map(car => (*/}
+                {data.map(car => 
 
                     <div className="single-car">
                             <div className="singlecar-container">
                                 <div className="car-image">
-                                    <img src={Audi} alt="CarTitle" />
+                                    <img src={car.carImage} alt={car.title} />
                                 </div>
 
                                 <div className="car-info">
-                                    <h2>Audi Q4 | Superfast </h2>
+                                    <h2>{car.title}</h2>
                                     <p className="available">available</p>
                                     <p className="per-day">per day<span>$ 35*</span></p>
                                 </div>
 
                         </div>
-
-                    
-
                     </div>
                         <div className="general-info">
                              <div className="general-text">
@@ -87,12 +83,11 @@ export default class SingleCar extends Component {
                                 </div>
                             </div>
                         </div>
-                {/* ))};*/}
-
+                )}
                 </div>
             );
         }
-    }
+}
 
 
 

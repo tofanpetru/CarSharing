@@ -17,6 +17,11 @@ namespace Application.Manager
             _mapper = mapper;
         }
 
+        public CarDetailsDTO Get(int id)
+        {
+            return _mapper.Map<CarDetailsDTO>(_carRepository.Get(id));
+        }
+
         public ICollection<AllCarsDTO> GetAll()
         {
             return _mapper.Map<ICollection<AllCarsDTO>>(_carRepository.GetAll());

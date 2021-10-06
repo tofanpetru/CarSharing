@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Persistence;
 using Infrastructure.Repository.Abstract;
 using Infrastructure.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,7 +20,9 @@ namespace Infrastructure.Repository.Implementations
 
         public IEnumerable<Car> GetLastThreeAvalableCars()
         {
-            return CarSharingContext.Cars.Where(c => c.IsAvalable).Take(3).OrderBy(c => c.PublishDate);
+            return CarSharingContext.Cars.Where(c => c.IsAvalable)
+                                         .Take(3)
+                                         .OrderBy(c => c.PublishDate);
         }
     }
 }

@@ -34,18 +34,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="ClientApp\src\Pages\Error.cshtml" />
-    <Content Include="ClientApp\src\Pages\Shared\_Layout.cshtml" />
-    <Content Include="ClientApp\src\Pages\Shared\_LoginPartial.cshtml" />
-    <Content Include="ClientApp\src\Pages\Shared\_ValidationScriptsPartial.cshtml" />
-    <Content Include="ClientApp\src\Pages\_ViewImports.cshtml" />
-    <Content Include="ClientApp\src\Pages\_ViewStart.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Error.cshtml" />
+    <None Include="Pages\Error.cshtml.cs" />
+    <None Include="Pages\Shared\_Layout.cshtml" />
+    <None Include="Pages\Shared\_LoginPartial.cshtml" />
+    <None Include="Pages\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Pages\_ViewImports.cshtml" />
+    <None Include="Pages\_ViewStart.cshtml" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

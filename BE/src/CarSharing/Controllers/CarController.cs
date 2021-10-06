@@ -42,5 +42,19 @@ namespace Presentation.Controllers
                 return null;
             }
         }
+
+        [HttpGet("Car/Details/{id}")]
+        public CarDetailsDTO Details(int id)
+        {
+            try
+            {
+                return _carManager.Get(id);
+            }
+            catch
+            {
+
+                return null;
+            }
+        }
     }
 }

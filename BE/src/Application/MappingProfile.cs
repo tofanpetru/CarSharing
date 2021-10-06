@@ -8,10 +8,15 @@ namespace Application
     {
         public MappingProfile()
         {
-            CreateMap<AllCarsDTO, Car>(MemberList.Source).ForPath(dest => dest.CarBrand.Name, src => src.MapFrom(i => i.CarBrand))
+            CreateMap<AllCarsDTO, Car>(MemberList.Source)
+                .ForPath(dest => dest.CarBrand.Name, src => src.MapFrom(i => i.CarBrand))
                 .ReverseMap();
 
-            CreateMap<HomePageCarsDTO, Car>().ReverseMap();
+            CreateMap<HomePageCarsDTO, Car>()
+                .ReverseMap();
+
+            CreateMap<CarDetailsDTO, Car>()
+                .ReverseMap();
         }
     }
 }
