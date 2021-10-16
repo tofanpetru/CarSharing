@@ -1,0 +1,10 @@
+﻿.cars-section {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+
+    .car-block:not(:first-child) {
+        margin-top: 10px;
+    }
+}
