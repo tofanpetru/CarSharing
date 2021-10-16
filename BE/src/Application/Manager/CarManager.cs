@@ -19,7 +19,7 @@ namespace Application.Manager
 
         public CarDetailsDTO Get(int id)
         {
-            return _mapper.Map<CarDetailsDTO>(_carRepository.Get(id));
+            return _mapper.Map<CarDetailsDTO>(_carRepository.GetCarById(id));
         }
 
         public ICollection<AllCarsDTO> GetAll()

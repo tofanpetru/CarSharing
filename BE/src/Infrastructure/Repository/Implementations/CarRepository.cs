@@ -24,5 +24,13 @@ namespace Infrastructure.Repository.Implementations
                                          .Take(3)
                                          .OrderBy(c => c.PublishDate);
         }
+
+        public Car GetCarById(int id)
+        {
+            return CarSharingContext.Cars.Where(c => c.Id == id)
+                                         .Include(c => c.CarBrand)
+                                         .Include(ca => ca.Categories)
+                                         .FirstOrDefault();
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Persistence;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Application
 {
@@ -14,8 +16,11 @@ namespace Application
 
             CreateMap<HomePageCarsDTO, Car>()
                 .ReverseMap();
+            CreateMap<CarCategoryDTO, Category>()
+                .ReverseMap();
 
-            CreateMap<CarDetailsDTO, Car>()
+            CreateMap<CarDetailsDTO, Car>(MemberList.Source)
+                .ForPath(dest => dest.CarBrand.Name, src => src.MapFrom(b => b.CarBrand))
                 .ReverseMap();
         }
     }

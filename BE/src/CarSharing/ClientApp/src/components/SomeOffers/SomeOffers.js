@@ -3,6 +3,7 @@ import './SomeOffers.scss';
 import Vector from '../Images/Vector.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 export default class SomeOffers extends React.Component {
     constructor(props) {
@@ -53,9 +54,16 @@ export default class SomeOffers extends React.Component {
                             <p className="price">
                                 {car.pricePerDay} $
                             </p>
-                            <div className="price-button">
-                                <button type="button">Reserve now <img src={Vector} alt="right arrow" /></button>
-                            </div>
+                            <Link
+                                to={{
+                                    pathname: `/details/${car.id}`,
+                                }}
+                            >
+                                <div className="price-button">
+                                    <button type="button">Reserve now <img src={Vector} alt="right arrow" /></button>
+                                </div>
+                            </Link>
+                            
                         </div>
                     )}
                 </div>
