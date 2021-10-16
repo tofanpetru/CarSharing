@@ -5,7 +5,7 @@ namespace Application.Interfaces
 {
     public interface ICarManager
     {
-        ICollection<AllCarsDTO> GetAll();
+        IEnumerable<AllCarsDTO> GetAllCars();
         IEnumerable<HomePageCarsDTO> GetLastThreeAvalableCars();
     }
 }

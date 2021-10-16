@@ -22,7 +22,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                return _carManager.GetAll();
+                return _carManager.GetAllCars();
             }
             catch
             {

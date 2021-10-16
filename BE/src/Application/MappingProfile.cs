@@ -12,6 +12,12 @@ namespace Application
                 .ReverseMap();
 
             CreateMap<HomePageCarsDTO, Car>().ReverseMap();
+
+            CreateMap<CarCategoryDTO, Category>().ReverseMap();
+
+            CreateMap<AllCarsDTO, Car>(MemberList.Source)
+                .ForPath(dest => dest.CarBrand.Name, src => src.MapFrom(b => b.CarBrand))
+                .ReverseMap();
         }
     }
 }

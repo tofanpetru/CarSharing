@@ -1,45 +1,69 @@
 ﻿import React, { Component } from "react";
 import './CarBlock.scss';
-import Audi from '../Images/Audi.png'
+import { Link } from "react-router-dom";
 
 
 export default class CarBlock extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: []
+        };
+    }
+
+    componentDidMount() {
+        fetch("api/GetAllCars")
+            .then((res) => res.json())
+            .then(
+                (data) => {
+                    this.setState({
+                        data: data
+                    });
+                },
+                (error) => {
+                    console.log(error)
+                }
+            );
+    }
+
     render() {
+        const { data } = this.state;
         return (
-            <div className="car-block">
+                <div className="car-block">
+                {data.map(car =>
 
-                <div className="car-content">
-                    <div className="car-image">
-                        <img src={Audi}/>
+                    <div className="car-content car-block" href="">
+
+                        <div className="car-image">
+                            <img src={car.carImage}/>
+                        </div>
+
+                        <div className="car-text">
+                            <h2>{car.title}</h2>
+                            <p className="car-price"> € {car.pricePerDay}/day</p>
+
+                            <div className="data-row">
+                                <p>Transmission</p>
+                                <p>{car.transmission}</p>
+                            </div>
+
+                            <div className="data-row">
+                                <p>Fuel</p>
+                                <p>{car.fuel}</p>
+                            </div>
+
+                            <div className="data-row">
+                                <p>Kilometers</p>
+                                <p>{car.kilometers}</p>
+                            </div>
+
+                            <div className="data-row">
+                                <p>Seats</p>
+                                <p>{car.seats}</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="car-text">
-                        <h2>BMW M3 2020</h2>
-                        <p className="car-price"> € 60/day</p>
-
-                        <div className="data-row">
-                            <p>Transmission</p>
-                            <p>Automatic</p>
-                        </div>
-
-                        <div className="data-row">
-                            <p>Fuel</p>
-                            <p>Diesel</p>
-                        </div>
-
-                        <div className="data-row">
-                            <p>Kilometers</p>
-                            <p>12000</p>
-                        </div>
-
-                        <div className="data-row">
-                            <p>Seats</p>
-                            <p>5</p>
-                        </div>
-
-
-                    </div>
-                </div>
+                )}
             </div>
         );
     }

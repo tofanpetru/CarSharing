@@ -12,7 +12,6 @@ export class Cars extends Component {
             <div className="cars-section">
                 <div className="cars">
                     <CarBlock />
-                    <CarBlock />
                 </div>
 
                 <div className="filter">

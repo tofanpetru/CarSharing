@@ -17,9 +17,9 @@ namespace Application.Manager
             _mapper = mapper;
         }
 
-        public ICollection<AllCarsDTO> GetAll()
+        public IEnumerable<AllCarsDTO> GetAllCars()
         {
-            return _mapper.Map<ICollection<AllCarsDTO>>(_carRepository.GetAll());
+            return _mapper.Map<ICollection<AllCarsDTO>>(_carRepository.GetAllCars());
         }
 
         public IEnumerable<HomePageCarsDTO> GetLastThreeAvalableCars()
