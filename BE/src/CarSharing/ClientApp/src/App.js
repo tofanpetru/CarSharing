@@ -3,7 +3,6 @@ import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './Pages/Home/Home';
 import { Details } from './Pages/Details/Details';
-import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 import ApiAuthorizationRoutes from './components/api-authorization/ApiAuthorizationRoutes';

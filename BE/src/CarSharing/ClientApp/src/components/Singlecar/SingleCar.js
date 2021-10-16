@@ -1,7 +1,5 @@
 ﻿import React, { Component } from "react";
 import './SingleCar.scss';
-import Audi from '../Images/Audi.png';
-import { useParams } from 'react-router-dom';
 
 export default class SingleCar extends Component {
     constructor(props) {
@@ -12,7 +10,7 @@ export default class SingleCar extends Component {
     }
 
     componentDidMount() {
-        fetch("api/Car/Details?id=" + this.props.match.params.id)
+        fetch("api/Car/Details/" + window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1))
             .then((res) => res.json())
             .then(
                 (data) => {
@@ -42,7 +40,7 @@ export default class SingleCar extends Component {
                                 <div className="car-info">
                                     <h2>{data.title}</h2>
                                     <p className="available">available</p>
-                                    <p className="per-day">per day<span>$ 35*</span></p>
+                                <p className="per-day">per day<span>$ { data.pricePerDay}</span></p>
                                 </div>
 
                             </div>
