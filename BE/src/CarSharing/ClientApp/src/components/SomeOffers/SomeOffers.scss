@@ -16,6 +16,7 @@
             width: 350px;
             height: 450px;
             background-color: #fff;
+            border-radius: 3px;
 
             &:hover {
                 transform: scale(1.05);
@@ -78,6 +79,8 @@
                     border: none;
                     padding: 5px 30px;
                     cursor: pointer;
+                    border-radius: 3px;
+
 
                     &:hover {
                         opacity: 0.8;
