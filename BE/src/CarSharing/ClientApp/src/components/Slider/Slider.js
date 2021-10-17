@@ -23,10 +23,10 @@ export default class SimpleSlider extends Component {
                     <div>
                         <div className="image-container">
                             <img src={Slider1} alt="slider image"/>
-                            <div class="centered-text">
+                            <div className="centered-text">
                                 <p>Reserve now</p>
                             </div>
-                            <div class="centered-button">
+                            <div className="centered-button">
                                 <button type="button"> View cars</button>
                             </div>
                         </div>
@@ -34,10 +34,10 @@ export default class SimpleSlider extends Component {
                     <div>
                         <div className="image-container">
                             <img src={Slider1} alt="slider image"/>
-                            <div class="centered-text">
+                            <div className="centered-text">
                                 <p>Reserve now</p>
                             </div>
-                            <div class="centered-button">
+                            <div className="centered-button">
                                 <button type="button"> View cars</button>
                             </div>
                         </div>

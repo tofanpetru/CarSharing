@@ -5,6 +5,7 @@ import { LoginMenu } from '../api-authorization/LoginMenu';
 import './NavMenu.scss';
 import Logo from '../Images/Logo.png';
 
+
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
 
@@ -26,20 +27,20 @@ export class NavMenu extends Component {
   render () {
     return (
       <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow " light>
+        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white " light>
                 <Container>
-                    <NavbarBrand tag={Link} to="/"><img alt="logoImage" className="logo" src={Logo} /></NavbarBrand>
+                    <NavbarBrand tag={Link} to="/"><img alt="logoImage" activeClassName="navbar__link--active" className="logo" src={Logo} /></NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
               <ul className="navbar-nav flex-grow">
                 <NavItem>
-                   <NavLink tag={Link} activeClassName="navbar__link--active" className="navbar__link" to="/">Home</NavLink>
+                                <NavLink tag={Link} activeClassName="navbar__link--active" className="navbar__link" to="/">Home</NavLink>
                 </NavItem>
                 <NavItem>
                    <NavLink tag={Link} activeClassName="navbar__link--active" className="navbar__link" to="/cars">Cars</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink tag={Link}  activeClassName="navbar__link--active" className="navbar__link" to="/fetch-data">Fetch data</NavLink>
+                                <NavLink tag={Link} activeClassName="navbar__link--active" className="navbar__link" to="/details">Fetch data</NavLink>
                 </NavItem>
                 <LoginMenu>
                 </LoginMenu>

@@ -1,13 +1,17 @@
-﻿a.navbar-brand {
+a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
 
+.navbar-expand-sm{
+    padding-top: 20px;
+}
+
 .logo {
     height: 60px;
 
-    &:hover{
+    &:hover {
         opacity: 0.9;
     }
 }
@@ -21,18 +25,16 @@ html {
   }
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-
-
 .navbar-light .navbar-nav .nav-link {
     font-family: Montserrat;
     font-weight: 300;
     font-size: 22px;
     color: black;
     padding-right: 30px;
+
+    a {
+        color: red;
+    }
 
     &:focus {
         color: #02AAB0;
@@ -41,7 +43,5 @@ html {
 
 
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:hover {
-    color: #02AAB0!important;
+    color: #02AAB0 !important;
 }
-
-

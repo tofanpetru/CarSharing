@@ -1,6 +1,8 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Persistence;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Application
 {
@@ -8,12 +10,14 @@ namespace Application
     {
         public MappingProfile()
         {
-            CreateMap<AllCarsDTO, Car>(MemberList.Source).ForPath(dest => dest.CarBrand.Name, src => src.MapFrom(i => i.CarBrand))
+            CreateMap<AllCarsDTO, Car>(MemberList.Source)
+                .ForPath(dest => dest.CarBrand.Name, src => src.MapFrom(i => i.CarBrand))
                 .ReverseMap();
-
-            CreateMap<HomePageCarsDTO, Car>().ReverseMap();
-
-            CreateMap<CarCategoryDTO, Category>().ReverseMap();
+                
+            CreateMap<HomePageCarsDTO, Car>()
+                .ReverseMap();
+            CreateMap<CarCategoryDTO, Category>()
+                .ReverseMap();
 
             CreateMap<AllCarsDTO, Car>(MemberList.Source)
                 .ForPath(dest => dest.CarBrand.Name, src => src.MapFrom(b => b.CarBrand))
@@ -21,7 +25,10 @@ namespace Application
 
             CreateMap<CarBrandDTO, CarBrand>(MemberList.Source)
                 .ReverseMap();
-            CreateMap<CarsSpecificationsDTO, Car>()
+            CreateMap<CarsSpecificationsDTO, Car>();
+            
+            CreateMap<CarDetailsDTO, Car>(MemberList.Source)
+                .ForPath(dest => dest.CarBrand.Name, src => src.MapFrom(b => b.CarBrand))
                 .ReverseMap();
         }
     }

@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Repository.Interfaces;
@@ -15,6 +15,12 @@ namespace Application.Manager
         {
             _carRepository = carRepository;
             _mapper = mapper;
+        }
+
+
+        public CarDetailsDTO Get(int id)
+        {
+            return _mapper.Map<CarDetailsDTO>(_carRepository.GetCarById(id));
         }
 
         public IEnumerable<AllCarsDTO> GetAllCars()

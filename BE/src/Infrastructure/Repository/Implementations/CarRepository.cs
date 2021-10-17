@@ -20,7 +20,17 @@ namespace Infrastructure.Repository.Implementations
 
         public IEnumerable<Car> GetLastThreeAvalableCars()
         {
-            return CarSharingContext.Cars.Where(c => c.IsAvalable).Take(3).OrderBy(c => c.PublishDate);
+            return CarSharingContext.Cars.Where(c => c.IsAvalable)
+                                         .Take(3)
+                                         .OrderBy(c => c.PublishDate);
+        }
+
+        public Car GetCarById(int id)
+        {
+            return CarSharingContext.Cars.Where(c => c.Id == id)
+                                         .Include(c => c.CarBrand)
+                                         .Include(ca => ca.Categories)
+                                         .FirstOrDefault();
         }
 
         public IEnumerable<Car> GetAllCars()
