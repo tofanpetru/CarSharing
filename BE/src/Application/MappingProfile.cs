@@ -25,7 +25,8 @@ namespace Application
 
             CreateMap<CarBrandDTO, CarBrand>(MemberList.Source)
                 .ReverseMap();
-            CreateMap<CarsSpecificationsDTO, Car>();
+
+            CreateMap<CarsSpecificationsDTO, Car>().ReverseMap();
             
             CreateMap<CarDetailsDTO, Car>(MemberList.Source)
                 .ForPath(dest => dest.CarBrand.Name, src => src.MapFrom(b => b.CarBrand))
