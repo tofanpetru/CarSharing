@@ -1,70 +1,74 @@
 ﻿import React, { Component } from "react";
 import './CarBlock.scss';
-import { Link } from "react-router-dom";
-
 
 export default class CarBlock extends Component {
+    static displayName = CarBlock.name;
+
     constructor(props) {
         super(props);
-        this.state = {
-            data: []
-        };
+        this.state = { cars: [], loading: true };
     }
 
     componentDidMount() {
-        fetch("api/GetAllCars")
-            .then((res) => res.json())
-            .then(
-                (data) => {
-                    this.setState({
-                        data: data
-                    });
-                },
-                (error) => {
-                    console.log(error)
-                }
-            );
+        this.populateCarData();
     }
 
-    render() {
-        const { data } = this.state;
+    static renderCarsTable(cars) {
         return (
-                <div className="car-block">
-                {data.map(car =>
+            <div className="car-block">
+                {cars.map(cars =>
 
-                    <div className="car-content car-block" href="">
+                    <div className={"car-content car-block " + (cars.isAvalable ? "" : "car-not-avalable")} href="">
 
                         <div className="car-image">
-                            <img src={car.carImage}/>
+                            <img src={cars.carImage}/>
                         </div>
 
                         <div className="car-text">
-                            <h2>{car.title}</h2>
-                            <p className="car-price"> € {car.pricePerDay}/day</p>
+                            <h2>{cars.title + (cars.isAvalable ? "" : " | Not avalable")}</h2>
+                            <p className="car-price"> € {cars.pricePerDay}/day</p>
 
                             <div className="data-row">
                                 <p>Transmission</p>
-                                <p>{car.transmission}</p>
+                                <p>{cars.transmission}</p>
                             </div>
 
                             <div className="data-row">
                                 <p>Fuel</p>
-                                <p>{car.fuel}</p>
+                                <p>{cars.fuel}</p>
                             </div>
 
                             <div className="data-row">
                                 <p>Kilometers</p>
-                                <p>{car.kilometers}</p>
+                                <p>{cars.kilometers + (cars.isAvalable ? "" : " +")}</p>
                             </div>
 
                             <div className="data-row">
                                 <p>Seats</p>
-                                <p>{car.seats}</p>
+                                <p>{cars.seats}</p>
                             </div>
                         </div>
                     </div>
                 )}
             </div>
         );
+    }
+
+    render() {
+        let contents = this.state.loading
+            ? <p><em>Loading...</em></p>
+            : CarBlock.renderCarsTable(this.state.cars);
+
+        return (
+            <div>
+                {contents}
+            </div>
+        );
+    }
+
+    async populateCarData() {
+        const response = await fetch('api/GetAllCars');
+        const data = await response.json();
+        this.setState({ cars: data, loading: false });
     }
 }

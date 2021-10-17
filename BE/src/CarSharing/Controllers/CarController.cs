@@ -42,5 +42,18 @@ namespace Presentation.Controllers
                 return null;
             }
         }
+
+        [HttpGet("Car/specifications")]
+        public IEnumerable<CarsSpecificationsDTO> GetCarSpecifications()
+        {
+            try
+            {
+                return _carManager.GetCarsSpecifications();
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

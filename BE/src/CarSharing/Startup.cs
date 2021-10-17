@@ -56,9 +56,13 @@ namespace CarSharing
 
             //Managers Injection
             services.AddTransient<ICarManager, CarManager>();
+            services.AddTransient<ICategoriesManager, CategoriesManager>();
+            services.AddTransient<ICarBrandManager, CarBrandManager>();
 
             //Repositories Injection
             services.AddTransient<ICarRepository, CarRepository>();
+            services.AddTransient<ICategoriesRepository, CategoriesRepository>();
+            services.AddTransient<ICarBrandRepository, CarBrandRepository>();
 
             //Mapper
             var mapperConfig = new MapperConfiguration(mc =>

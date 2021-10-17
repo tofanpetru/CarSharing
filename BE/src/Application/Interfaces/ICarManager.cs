@@ -7,5 +7,6 @@ namespace Application.Interfaces
     {
         IEnumerable<AllCarsDTO> GetAllCars();
         IEnumerable<HomePageCarsDTO> GetLastThreeAvalableCars();
+        IEnumerable<CarsSpecificationsDTO> GetCarsSpecifications();
     }
 }

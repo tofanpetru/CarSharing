@@ -8,5 +8,6 @@ namespace Infrastructure.Repository.Interfaces
         string FindCarPostByTitle(string title);
         IEnumerable<Car> GetLastThreeAvalableCars();
         IEnumerable<Car> GetAllCars();
+        IEnumerable<Car> GetAllCarSpecifications();
     }
 }

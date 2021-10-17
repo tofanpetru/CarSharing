@@ -26,5 +26,9 @@ namespace Application.Manager
         {
             return _mapper.Map<ICollection<HomePageCarsDTO>>(_carRepository.GetLastThreeAvalableCars());
         }
+        public IEnumerable<CarsSpecificationsDTO> GetCarsSpecifications()
+        {
+            return _mapper.Map<ICollection<CarsSpecificationsDTO>>(_carRepository.GetAllCarSpecifications());
+        }
     }
 }
