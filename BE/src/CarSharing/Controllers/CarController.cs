@@ -22,7 +22,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                return _carManager.GetAll();
+                return _carManager.GetAllCars();
             }
             catch
             {
@@ -43,6 +43,19 @@ namespace Presentation.Controllers
             }
         }
 
+        [HttpGet("Car/specifications")]
+        public IEnumerable<CarsSpecificationsDTO> GetCarSpecifications()
+        {
+            try
+            {
+                return _carManager.GetCarsSpecifications();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         [HttpGet("Car/Details/{id}")]
         public CarDetailsDTO Details(int id)
         {
@@ -52,7 +65,6 @@ namespace Presentation.Controllers
             }
             catch
             {
-
                 return null;
             }
         }

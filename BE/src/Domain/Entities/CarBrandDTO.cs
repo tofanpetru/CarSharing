@@ -1,9 +1,8 @@
 ﻿namespace Domain.Entities
 {
-    public class CarCategoryDTO
+    public class CarBrandDTO
     {
         public int Id { get; set; }
-        public string Title { get; set; }
+        public string Name { get; set; }
     }
 }
-

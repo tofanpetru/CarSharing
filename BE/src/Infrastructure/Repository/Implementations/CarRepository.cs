@@ -32,5 +32,16 @@ namespace Infrastructure.Repository.Implementations
                                          .Include(ca => ca.Categories)
                                          .FirstOrDefault();
         }
+
+        public IEnumerable<Car> GetAllCars()
+        {
+            return CarSharingContext.Cars.Include(c => c.Categories)
+                                         .Include(cb => cb.CarBrand);
+        }
+
+        public IEnumerable<Car> GetAllCarSpecifications()
+        {
+            return CarSharingContext.Cars.Distinct();
+        }
     }
 }
