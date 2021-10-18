@@ -2,45 +2,31 @@
 import './SingleCar.scss';
 
 export default class SingleCar extends Component {
+    static displayName = SingleCar.name;
+
     constructor(props) {
         super(props);
-        this.state = {
-            data: []
-        };
+        this.state = { car: [], loading: true };
     }
 
     componentDidMount() {
-        fetch("api/Car/Details/" + window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1))
-            .then((res) => res.json())
-            .then(
-                (data) => {
-                    this.setState({
-                        data: data
-                    });
-                },
-                (error) => {
-                    console.log(error)
-                }
-            );
+        this.populateCarData();
     }
 
-
-    render() {
-        const { data } = this.state;
+    static renderCarTable(car) {
         return (
             <div className="general-container">
-          
                     <div>
                         <div className="single-car">
                             <div className="singlecar-container">
                                 <div className="car-image">
-                                    <img src={data.carImage} alt={data.title} />
+                                    <img src={car.carImage} alt={car.title} />
                                 </div>
 
                                 <div className="car-info">
-                                    <h2>{data.title}</h2>
+                                    <h2>{car.title}</h2>
                                     <p className="available">available</p>
-                                <p className="per-day">per day<span>$ { data.pricePerDay}</span></p>
+                                <p className="per-day">per day<span>$ { car.pricePerDay}</span></p>
                                 </div>
 
                             </div>
@@ -58,27 +44,27 @@ export default class SingleCar extends Component {
                             <div className="car-details">
                                 <div>
                                     <h3>Engine</h3>
-                                    <p>{data.engine}</p>
+                                    <p>{car.engine}</p>
                                 </div>
 
                                 <div>
                                     <h3>Kilometers</h3>
-                                    <p>{data.kilometers}</p>
+                                    <p>{car.kilometers}</p>
                                 </div>
 
                                 <div>
                                     <h3>Fuel</h3>
-                                    <p>{data.fuel}</p>
+                                    <p>{car.fuel}</p>
                                 </div>
 
                                 <div>
                                     <h3>Seats</h3>
-                                    <p>{data.seats}</p>
+                                    <p>{car.seats}</p>
                                 </div>
 
                                 <div>
                                     <h3>Color</h3>
-                                    <p>{data.color}</p>
+                                    <p>{car.color}</p>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +72,25 @@ export default class SingleCar extends Component {
              
                 </div>
             );
-        }
+    }
+
+    render() {
+        let contents = this.state.loading
+            ? <p><em>Loading...</em></p>
+            : SingleCar.renderCarTable(this.state.car);
+
+        return (
+            <div>
+                {contents}
+            </div>
+        );
+    }
+
+    async populateCarData() {
+        const response = await fetch('api/Car/Details/' + window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1));
+        const data = await response.json();
+        this.setState({ car: data, loading: false });
+    }
 }
 
 
