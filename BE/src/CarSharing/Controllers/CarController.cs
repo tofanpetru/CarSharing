@@ -1,6 +1,8 @@
 ﻿using Application.Interfaces;
 using Domain.Entities;
+using Domain.Entities.Pagination;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Presentation.Controllers
@@ -18,55 +20,41 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("GetAllCars")]
-        public IEnumerable<AllCarsDTO> GetAllCars()
+        public IActionResult GetAllCars([FromQuery] CarParameters carParameters)
         {
-            try
+            var cars = _carManager.GetPagedCars(carParameters);
+
+            var metadata = new
             {
-                return _carManager.GetAllCars();
-            }
-            catch
-            {
-                return null;
-            }
+                cars.TotalCount,
+                cars.PageSize,
+                cars.CurrentPage,
+                cars.TotalPages,
+                cars.HasNext,
+                cars.HasPrevious
+            };
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            return Ok(cars);
         }
 
         [HttpGet("GetHomePageCars")]
         public IEnumerable<HomePageCarsDTO> GetHomePageCars()
         {
-            try
-            {
-                return _carManager.GetLastThreeAvalableCars();
-            }
-            catch
-            {
-                return null;
-            }
+            return _carManager.GetLastThreeAvalableCars();
         }
 
         [HttpGet("Car/specifications")]
         public IEnumerable<CarsSpecificationsDTO> GetCarSpecifications()
         {
-            try
-            {
-                return _carManager.GetCarsSpecifications();
-            }
-            catch
-            {
-                return null;
-            }
+            return _carManager.GetCarsSpecifications();
         }
 
         [HttpGet("Car/Details/{id}")]
         public CarDetailsDTO Details(int id)
         {
-            try
-            {
-                return _carManager.Get(id);
-            }
-            catch
-            {
-                return null;
-            }
+            return _carManager.Get(id);
         }
     }
 }

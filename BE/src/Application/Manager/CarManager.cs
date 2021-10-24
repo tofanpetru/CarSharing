@@ -1,8 +1,13 @@
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Entities.Pagination;
+using Infrastructure.Persistence;
 using Infrastructure.Repository.Interfaces;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Application.Manager
 {
@@ -23,7 +28,7 @@ namespace Application.Manager
             return _mapper.Map<CarDetailsDTO>(_carRepository.GetCarById(id));
         }
 
-        public IEnumerable<AllCarsDTO> GetAllCars()
+        public ICollection<AllCarsDTO> GetAllCars()
         {
             return _mapper.Map<ICollection<AllCarsDTO>>(_carRepository.GetAllCars());
         }
@@ -35,6 +40,12 @@ namespace Application.Manager
         public IEnumerable<CarsSpecificationsDTO> GetCarsSpecifications()
         {
             return _mapper.Map<ICollection<CarsSpecificationsDTO>>(_carRepository.GetAllCarSpecifications());
+        }
+        public PagedList<AllCarsDTO> GetPagedCars(CarParameters carParameters)
+        {
+            return PagedList<AllCarsDTO>.ToPagedList(GetAllCars(),
+                carParameters.PageNumber,
+                carParameters.PageSize);
         }
     }
 }
