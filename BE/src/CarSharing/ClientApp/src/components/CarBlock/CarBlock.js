@@ -1,4 +1,5 @@
-﻿import React, { Component } from "react";
+﻿import React, { Component, useState } from "react";
+import ReactPaginate from 'react-paginate';
 import './CarBlock.scss';
 
 export default class CarBlock extends Component {
@@ -7,6 +8,7 @@ export default class CarBlock extends Component {
     constructor(props) {
         super(props);
         this.state = { cars: [], loading: true };
+        
     }
 
     componentDidMount() {
@@ -14,6 +16,7 @@ export default class CarBlock extends Component {
     }
 
     static renderCarsTable(cars) {
+
         return (
             <div className="car-block">
                 {cars.map(cars =>
@@ -50,6 +53,8 @@ export default class CarBlock extends Component {
                         </div>
                     </div>
                 )}
+                <h1>asdasaa</h1>
+
             </div>
         );
     }
@@ -59,9 +64,11 @@ export default class CarBlock extends Component {
             ? <p><em>Loading...</em></p>
             : CarBlock.renderCarsTable(this.state.cars);
 
+
         return (
             <div>
                 {contents}
+
             </div>
         );
     }

@@ -2,10 +2,10 @@
 import Slider from "react-slick";
 import './Slider.scss';
 import Slider1 from '../Images/Slider1.png';
-
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 
 
 export default class SimpleSlider extends Component {
@@ -27,7 +27,9 @@ export default class SimpleSlider extends Component {
                                 <p>Reserve now</p>
                             </div>
                             <div className="centered-button">
-                                <button type="button"> View cars</button>
+                                <Link to="/cars">
+                                    <button type="button"> View cars</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

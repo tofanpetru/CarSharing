@@ -1,7 +1,6 @@
 ﻿import React, { Component } from "react";
 import './CarFilter.scss';
 
-
 export default class CarFilter extends Component {
     static displayName = CarFilter.name;
 
