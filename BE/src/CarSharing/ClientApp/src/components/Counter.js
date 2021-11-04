@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import './Counter.scss';
+import { Link } from "react-router-dom";
 
 export class Counter extends Component {
   static displayName = Counter.name;
@@ -11,7 +12,7 @@ export class Counter extends Component {
         this.state = {
             offset: 0,
             data: [],
-            perPage: 1,
+            perPage: 2,
             currentPage: 0
         };
         this.handlePageClick = this.handlePageClick.bind(this);
@@ -24,9 +25,52 @@ export class Counter extends Component {
 
                 const data = res.data;
                 const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
-                const postData = slice.map(pd => <React.Fragment>
-                    <p>{pd.title}</p>
-                    <img src={pd.carImage} alt="" />
+                const postData = slice.map(cars => <React.Fragment>
+                    
+                <div className="car-block">
+                        
+                    <div className={"car-content car-block " + (cars.isAvalable ? "" : "car-not-avalable")} href="">
+                            <div className="car-image">
+                                <Link
+                                    to={{
+                                        pathname: `/details/${cars.id}`,
+                                    }}>
+                                    <img src={cars.carImage} />
+                                </Link>
+                        </div>
+
+                         <div className="car-text">
+                            <Link
+                                to={{
+                                  pathname: `/details/${cars.id}`,
+                                 }}>
+                                    <h2>{cars.title + (cars.isAvalable ? "" : " | Not avalable")}</h2>
+                                </Link>
+
+                            <p className="car-price"> $ {cars.pricePerDay}/day</p>
+                            <div className="data-row">
+                                <p>Transmission</p>
+                                <p>{cars.transmission}</p>
+                            </div>
+
+                            <div className="data-row">
+                                <p>Fuel</p>
+                                <p>{cars.fuel}</p>
+                            </div>
+
+                            <div className="data-row">
+                                <p>Kilometers</p>
+                                <p>{cars.kilometers + (cars.isAvalable ? "" : " +")}</p>
+                            </div>
+
+                            <div className="data-row">
+                                <p>Seats</p>
+                                <p>{cars.seats}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        
                 </React.Fragment>)
 
                 this.setState({

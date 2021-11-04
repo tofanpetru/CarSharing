@@ -7,8 +7,15 @@ export default class CarBlock extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { cars: [], loading: true };
-        
+        this.state = {
+            cars: [],
+            loading: true,
+
+            offset: 0,
+            perPage: 1,
+            currentPage: 0
+        };
+
     }
 
     componentDidMount() {
@@ -16,9 +23,9 @@ export default class CarBlock extends Component {
     }
 
     static renderCarsTable(cars) {
-
         return (
             <div className="car-block">
+                 
                 {cars.map(cars =>
 
                     <div className={"car-content car-block " + (cars.isAvalable ? "" : "car-not-avalable")} href="">

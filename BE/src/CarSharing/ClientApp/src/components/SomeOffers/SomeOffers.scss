@@ -90,3 +90,80 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 768px) {
+    .some-offers {
+        h2 {
+            padding: 20px 0px;
+            font-size: 28px;
+        }
+
+        .offers-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+
+            .car-container {
+                width: 280px;
+                height: 450px;
+                background-color: #fff;
+                border-radius: 3px;
+                margin: 0px 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .some-offers {
+        .offers-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            align-items: center;
+
+            .car-container {
+                width: 420px;
+                background-color: #fff;
+                border-radius: 3px;
+                margin: 0px 20px;
+                align-self: center;
+                justify-self: center;
+                height: 400px;
+
+                .car-title {
+                    font-family: Montserrat;
+                    font-weight: bold;
+                    font-size: 18px;
+                    text-align: center;
+                    padding: 10px 0px;
+                }
+
+                .price {
+                    text-align: center;
+                    font-family: Montserrat;
+                    font-weight: bold;
+                    font-size: 18px;
+                    color: #02AAB0;
+                    padding-top: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .some-offers {
+        .offers-container {
+            .car-container {
+                width: 320px;
+
+
+                }
+            }
+        }
+}
+
+
+

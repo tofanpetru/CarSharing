@@ -11,6 +11,7 @@ export default class SingleCar extends Component {
 
     componentDidMount() {
         this.populateCarData();
+        window.scrollTo(0, 0);
     }
 
     static renderCarTable(car) {

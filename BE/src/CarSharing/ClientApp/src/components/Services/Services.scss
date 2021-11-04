@@ -92,3 +92,31 @@
         }
     }
 }
+
+
+
+@media only screen and (max-width: 768px) {
+
+    .services-container {
+       width: 90%;
+        .first-row {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            .service:nth-child(2){
+                padding-top: 40px;
+            }
+
+            .service{
+                width: auto;
+            }
+        }
+
+        .second-row{
+            width: 80%;
+        }
+    }
+}
+
+

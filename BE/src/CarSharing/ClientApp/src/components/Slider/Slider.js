@@ -18,7 +18,7 @@ export default class SimpleSlider extends Component {
             arrows: true,
         };
         return (
-            <section className="Hello there">
+            <section className="slider-section">
                 <Slider {...settings}>
                     <div>
                         <div className="image-container">
@@ -37,10 +37,12 @@ export default class SimpleSlider extends Component {
                         <div className="image-container">
                             <img src={Slider1} alt="slider image"/>
                             <div className="centered-text">
-                                <p>Reserve now</p>
+                                <p>Select a car</p>
                             </div>
                             <div className="centered-button">
-                                <button type="button"> View cars</button>
+                                <Link to="/cars">
+                                    <button type="button"> View cars</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

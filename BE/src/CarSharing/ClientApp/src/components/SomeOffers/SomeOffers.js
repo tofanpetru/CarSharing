@@ -11,21 +11,24 @@ export default class SomeOffers extends React.Component {
         this.state = {
             data: []
         };
+
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         fetch("api/getHomePageCars")
             .then((res) => res.json())
             .then(
                 (data) => {
                     this.setState({
                         data: data
+
                     });
                 },
                 (error) => {
                     console.log(error)
                 }
-            );
+        );
     }
 
     render() {
@@ -56,7 +59,9 @@ export default class SomeOffers extends React.Component {
                             </p>
                             <Link
                                 to={{
+
                                     pathname: `/details/${car.id}`,
+
                                 }}
                             >
                                 <div className="price-button">

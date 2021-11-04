@@ -1,6 +1,6 @@
 ﻿.footer-container {
     display: flex;
-    gap: 80px;
+    gap: 15%;
     justify-content: center;
     padding: 50px 0px;
     margin-top: 80px;
@@ -59,4 +59,16 @@
             }
         }
     }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 30px;
+        gap: 40px;
+    }
+
 }

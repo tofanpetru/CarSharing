@@ -107,3 +107,22 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .steps-container {
+        .text-container{
+            margin: 0 20px;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            align-self: center;
+            justify-self: center;
+
+            .curve {
+                display: none;
+            }
+        }
+    }
+
+}

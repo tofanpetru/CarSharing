@@ -31,7 +31,7 @@ export default class Steps extends Component {
                     </div>
 
                     <div className="step2">
-                        <img src={Curved} alt="curved" />
+                        <img className="curve" src={Curved} alt="curved" />
                     </div>
 
                     <div className="step3">
@@ -41,7 +41,7 @@ export default class Steps extends Component {
                     </div>
 
                     <div className="step2">
-                        <img src={Curved} alt="curved" />
+                        <img className="curve" src={Curved} alt="curved" />
                     </div>
 
                     <div className="step5">
