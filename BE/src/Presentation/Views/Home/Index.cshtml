@@ -1,0 +1,179 @@
+﻿@using System.Linq;
+@{
+    ViewData["Title"] = "Home Page";
+
+    var authors = ViewBag.authors;
+    var languages = ViewBag.languages;
+    var genres = ViewBag.genres;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <h3>Books</h3>
+            <hr />
+            @{ ViewBag.PaginationAction = "Index"; }
+            <partial name="_AllBooksPartial" />
+        </div>
+        <div class="col-2">
+            <h3>Filters</h3>
+            <hr />
+            <p>Author</p>
+            <form sp-controller="Home" asp-action="Index" id="searchForms">
+                <div class="form-group">
+                    <input class="form-control me-sm-2" type="text" id="ByAuthor" name="ByAuthor" placeholder="Search" value="@ViewBag.BookSearch.ByAuthor">
+                </div>
+                <br />
+
+                <div class="filter-scroll">
+                    @foreach (var author in authors)
+                    {
+                        if (ViewBag.checkBoxFilter.CheckBoxAuthors != null && ViewBag.checkBoxFilter.CheckBoxAuthors.Contains(author.FullName)) ViewBag.checkBoxFilter.Checked = "checked"; else ViewBag.checkBoxFilter.Checked = null;
+                        <div class="form-check">
+                            <div class="custom-control custom-checkbox">
+                                <input class="form-check-input" type="checkbox" name="CheckBoxAuthors" id="author_@author.FullName" value="@author.FullName" checked="@ViewBag.checkBoxFilter.Checked" onclick="this.form.submit()">
+                                <label class="form-check-label" for="author_@author.FullName">
+                                    @author.FullName
+                                </label>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <br />
+                <p>Genre</p>
+                <div class="form-group">
+                    <input class="form-control me-sm-2" type="text" id="ByGenre" name="ByGenre" placeholder="Search" value="@ViewBag.BookSearch.ByGenre">
+                </div>
+                <br />
+                <div class="filter-scroll">
+                    @foreach (var genre in genres)
+                    {
+                        if (ViewBag.checkBoxFilter.CheckBoxGenres != null && ViewBag.checkBoxFilter.CheckBoxGenres.Contains(genre.Name)) ViewBag.checkBoxFilter.Checked = "checked"; else ViewBag.checkBoxFilter.Checked = null;
+                        <div class="form-check">
+                            <div class="custom-control custom-checkbox">
+                                <input class="form-check-input" type="checkbox" name="CheckBoxGenres" value="@genre.Name" id="checkBoxGenre_@genre.Name" checked="@ViewBag.checkBoxFilter.Checked" onclick="this.form.submit()">
+                                <label class="form-check-label" for="checkBoxGenre_@genre.Name">
+                                    @genre.Name
+                                </label>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <br />
+                <p>Language</p>
+                <div class="form-group">
+                    <input class="form-control me-sm-2" type="text" id="ByLanguage" name="ByLanguage" placeholder="Search" value="@ViewBag.BookSearch.ByLanguage">
+                </div>
+                <br />
+                <div class="filter-scroll">
+                    @foreach (var language in languages)
+                    {
+                        if (ViewBag.checkBoxFilter.CheckBoxLanguages != null && ViewBag.checkBoxFilter.CheckBoxLanguages.Contains(language.Name)) ViewBag.checkBoxFilter.Checked = "checked"; else ViewBag.checkBoxFilter.Checked = null;
+                        <div class="form-check">
+                            <div class="custom-control custom-checkbox">
+                                <input class="form-check-input" type="checkbox" name="CheckBoxLanguages" value="@language.Name" id="checkBoxLanguage_@language.Name" checked="@ViewBag.checkBoxFilter.Checked" onclick="this.form.submit()">
+                                <label class="form-check-label" for="checkBoxLanguage_@language.Name">
+                                    @language.Name
+                                </label>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <br />
+                <p>Status</p>
+                <div class="form-check">
+                    <div class="custom-control custom-checkbox">
+                        <input class="form-check-input" type="checkbox" name="BookStatuses" value="Available" id="BookStatusFree" @(ViewBag.checkBoxFilter.BookStatuses != null && ViewBag.checkBoxFilter.BookStatuses.Contains("Available") ? "checked" : "") onclick="this.form.submit()">
+                        <label class="form-check-label" for="CheckBoxFree">
+                            Available
+                        </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input class="form-check-input" type="checkbox" name="BookStatuses" value="Busy" id="BookStatusBusy" @(ViewBag.checkBoxFilter.BookStatuses != null && ViewBag.checkBoxFilter.BookStatuses.Contains("Busy") ? "checked" : "") onclick="this.form.submit()">
+                        <label class="form-check-label" for="CheckBoxBusy">
+                            Busy
+                        </label>
+                    </div>
+                </div>
+                <br />
+                <p>Popularity</p>
+                <div class="rate">
+                    @for (int i = AppSettings.Instance.BookRatingStars; i > 0; i--)
+                    {
+                        if (ViewBag.bookRating.Rating != 0 && ViewBag.bookRating.Rating <= i) ViewBag.bookRating.Checked = "checked"; else ViewBag.bookRating.Checked = null;
+                        <input type="radio" id="star_@i" name="Rating" value="@i" onclick="this.form.submit();" checked="@ViewBag.bookRating.Checked" />
+                        <label for="star_@i" title="@i stars">@i stars</label>
+                    }
+                </div>
+            </form>
+            @if (
+             ViewBag != null && (
+            (ViewBag.bookRating != null && ViewBag.bookRating.Rating != 0)
+             ||
+             (ViewBag.BookSearch != null && (
+              !String.IsNullOrEmpty(ViewBag.BookSearch.ByAuthor)
+             || !String.IsNullOrEmpty(ViewBag.BookSearch.ByGenre)
+             || !String.IsNullOrEmpty(ViewBag.BookSearch.ByLanguage)))
+             ||
+             (ViewBag.checkBoxFilter != null && (
+              (ViewBag.checkBoxFilter.CheckBoxAuthors != null && ViewBag.checkBoxFilter.CheckBoxAuthors.Count > 0)
+             || (ViewBag.checkBoxFilter.CheckBoxGenres != null && ViewBag.checkBoxFilter.CheckBoxGenres.Count > 0)
+             || (ViewBag.checkBoxFilter.CheckBoxLanguages != null && ViewBag.checkBoxFilter.CheckBoxLanguages.Count > 0)
+             || (ViewBag.checkBoxFilter.BookStatuses != null && ViewBag.checkBoxFilter.BookStatuses.Count > 0)
+             )
+             )))
+            {
+                <div>
+                    <button class="btn btn-dark" id="resetFilters" onclick="location.replace('/')">Reset filters</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ByAuthor').autocomplete({
+                source: '@Url.Action("GetAuthors", "Home")'
+            });
+            $('#ByGenre').autocomplete({
+                source: '@Url.Action("GetGenres", "Home")'
+            });
+            $('#ByLanguage').autocomplete({
+                source: '@Url.Action("GetLanguages", "Home")'
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('ul.pagination > li.disabled > a').addClass('page-link');
+        });
+
+        $(function () {
+            var timer = null;
+            var dataString;
+            function submitForm() {
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("Index", "Home")",
+                    data: dataString,
+                    success: function (result) {
+                        $("#searchForms").submit()
+                    }
+                });
+                return false;
+            }
+            $('[id^=By]').on('blur', function () {
+                clearTimeout(timer);
+                timer = setTimeout(submitForm, 1100);
+                var name = $("[id^=By]").val();
+                dataString = 'name=' + name;
+            });
+        });
+    </script>
+}

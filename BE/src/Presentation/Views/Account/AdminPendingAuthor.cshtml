@@ -1,0 +1,29 @@
+﻿@using Domain.Entities;
+@using System.Linq;
+@model ICollection<PendingRequestsDTO>
+@if (Model != null)
+{
+    @foreach (var r in Model)
+     {
+            <tr>
+                <th scope="row">
+                    <form id="editForm-@r.Id" asp-action="UpdatePendingBook" asp-controller="Book" method="post">
+                        <input class="author-text-input" value="@r.Author" asp-for="@r.Author" type="text" id="@r.Id" placeholder="@r.Author" name="Author" style="font-size:16px" oninput="ValidateEditedAuthorName(this.value, this.id);" readonly />
+                        <input type="hidden" name="Id" value="@r.Id">
+                        <div style="text-transform: lowercase" class="error-messages" id="err-addedAuthor-@r.Id"></div>
+                    </form>
+                </th>
+                <td>@r.Owner</td>
+                <td>
+                    @*EDIT button*@
+                    <button name="edit" type="button" value="@r.Id" id="editAuthor" class="btn btn-warning" onclick="makeEditable(@r.Id)">Edit</button>
+                    @*ADD button*@
+                    <form asp-action="AddBookFromPending" asp-controller="Book" method="post" onsubmit="AddPendingAuthor(@r.Id)" class="d-inline">
+                        <input type="submit" value="Add" class="btn btn-primary" style="background-color:black; border-color:black" />
+@**@                    <input id="addAuthorNameInput-@r.Id" asp-for="@r.Author" type="hidden" name="Author" style="text-transform:uppercase" oninput="ValidateEditedAuthorName(this.value, this.id);" readonly />
+                        <input type="hidden" name="Id" value="@r.Id">
+                    </form>
+                </td>
+            </tr>
+     }
+}

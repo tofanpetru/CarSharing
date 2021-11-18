@@ -1,0 +1,11 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+    var error = Model;
+}
+
+<div class="text-center">
+    <h1 class="text-danger fw-bold">@error.Code</h1>
+    <h2 class="text-danger mt-2 mb-4">@error.Status</h2>
+    <h4>@error.Message</h4>
+</div>

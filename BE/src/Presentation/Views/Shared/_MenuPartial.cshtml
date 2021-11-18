@@ -1,0 +1,81 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using Infrastructure.Persistance;
+@using Domain.Enums; 
+@inject SignInManager<User> SignInManager;
+@inject UserManager<User> UserManager;
+@{
+    var user = User.Identity.Name;
+}
+<link rel="stylesheet" href="~/css/Select.css" />
+<ul class="navbar-nav" style="padding-right:100px">
+    <li class="nav-item">
+        <a class="nav-link nav-link-item" asp-controller="Home" asp-action="Index" title="Manage">Catalog</a>
+    </li>
+    @*Notification Bell*@
+    <li class="nav-item">
+        <div class="dropdown" style="float: right; padding: 13px">
+            <a href="#" onclick="return false;" role="button" data-toggle="dropdown" id="notificationDropDown" data-target="#" style="float: left" aria-expanded="true">
+                <i class="glyphicon glyphicon-bell text-white" style="font-size: 150%; float: left;">
+                </i>
+            </a>
+            <span id="notifyBadgeCounter" class="badge badge-danger" style="display:none"></span>
+            <ul id="notifyModal" class="dropdown-menu dropdown-menu-left pull-right scrollbar dark-scrollbar" role="menu" style="width: 400px; overflow:auto; height: 400px;" aria-labelledby="notificationDropDown">
+                <li class="p-1" role="presentation">
+                    <span style="margin-left:5%; cursor:default">Notifications </span>
+                    <span id="clearAll" class="float-end p-0 mt-0 mb-0 clear-notify" style="margin-right:10px; cursor: pointer" onclick="ClearNotifications()">Clear All</span>
+                    <hr class="mb-0" style="margin-top:3px; padding-top:0px" />
+                </li>
+                <li>
+                    <ul id="notifyContent" class="timeline timeline-icons timeline-sm" style="margin:3%;">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item my-auto" style="vertical-align:middle">
+        <div class="dropdown">
+            <a class="nav-link-item">@user&#x25BE;</a>
+            <div class="dropdown-content">
+                <a asp-controller="Account" asp-action="UserProfile">My Profile</a>
+                @{
+                    if (User.IsInRole(AccessRole.Admin))
+                    {
+                        @Html.ActionLink("Admin", "Admin", "Account")
+                    }
+                }
+                <div class="dropdown-divider"></div>
+                <a asp-controller="Account" asp-action="LogOut">Sign out</a>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<style>
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #FFFFFF;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
