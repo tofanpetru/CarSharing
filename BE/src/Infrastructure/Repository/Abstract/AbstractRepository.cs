@@ -6,36 +6,36 @@ namespace Infrastructure.Repository.Abstract
 {
     public abstract class AbstractRepository<TModel> : IRepository<TModel> where TModel : class
     {
-        protected readonly BookSharingContext DataBaseContext;
+        protected readonly CarSharingContext CarSharingContext;
 
-        public AbstractRepository(BookSharingContext context)
+        public AbstractRepository(CarSharingContext context)
         {
-            this.DataBaseContext = context;
+            this.CarSharingContext = context;
         }
 
         public void Add(TModel entity)
         {
-            DataBaseContext.Set<TModel>().Add(entity);
+            CarSharingContext.Set<TModel>().Add(entity);
         }
 
         public TModel Get<T>(T id)
         {
-            return DataBaseContext.Set<TModel>().Find(id);
+            return CarSharingContext.Set<TModel>().Find(id);
         }
 
         public ICollection<TModel> GetAll()
         {
-            return DataBaseContext.Set<TModel>().ToList();
+            return CarSharingContext.Set<TModel>().ToList();
         }
 
         public void Remove(TModel entity)
         {
-            DataBaseContext.Set<TModel>().Remove(entity);
+            CarSharingContext.Set<TModel>().Remove(entity);
         }
 
         public void SaveChanges()
         {
-            DataBaseContext.SaveChanges();
+            CarSharingContext.SaveChanges();
         }
     }
 }

@@ -1,0 +1,128 @@
+﻿.steps-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .rent {
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 18px;
+        color: #02AAB0;
+        text-align: center;
+        padding-top: 50px;
+        margin-bottom: 0px;
+    }
+
+    .rent-title {
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+
+    .rent-text {
+        font-family: Montserrat;
+        font-size: 18px;
+        text-align: center;
+        margin: 0px;
+    }
+
+    .blue-line {
+        display: flex;
+        justify-content: center;
+        height: 10px;
+        margin-bottom: 30px;
+
+        div {
+            text-align: center;
+            width: 80px;
+            height: 10px;
+            border-bottom: 3px solid #02AAB0;
+        }
+    }
+
+    .steps {
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        img {
+              width: 110px;
+              height: 110px;
+        }
+
+        .step1 {
+            width: 180px;
+            text-align: center;
+
+
+
+            .title {
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 24px;
+                padding-top: 15px;
+                margin-bottom: 0px;
+            }
+        }
+
+        .step2 {
+            margin-top: -110px;
+
+            img {
+                width: 160px;
+                height: 150px;
+            }
+        }
+
+        .step3 {
+            text-align: center;
+            width: 200px;
+
+
+
+            .title {
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 24px;
+                padding-top: 15px;
+                margin-bottom: 0px;
+            }
+        }
+
+        .step5 {
+            width: 180px;
+            text-align: center;
+
+            .title {
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 24px;
+                padding-top: 15px;
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .steps-container {
+        .text-container{
+            margin: 0 20px;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            align-self: center;
+            justify-self: center;
+
+            .curve {
+                display: none;
+            }
+        }
+    }
+
+}

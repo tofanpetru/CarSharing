@@ -1,0 +1,169 @@
+﻿.some-offers {
+    h2 {
+        padding: 50px 0px;
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 48px;
+        text-align: center;
+    }
+
+    .offers-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+
+        .car-container {
+            width: 350px;
+            height: 450px;
+            background-color: #fff;
+            border-radius: 3px;
+
+            &:hover {
+                transform: scale(1.05);
+                transition: transform .5s;
+            }
+
+            .image-container {
+                text-align: center;
+            }
+
+            .car-title {
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 24px;
+                text-align: center;
+                padding: 20px 0px;
+            }
+
+            .caracteristics {
+                width: 75%;
+                margin: 0 auto;
+
+                div {
+                    display: flex;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 18px;
+
+                    p:nth-child(1) {
+                        width: 60%;
+                    }
+                }
+            }
+
+            .price {
+                text-align: center;
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 18px;
+                color: #02AAB0;
+                padding-top: 25px;
+            }
+
+            .price-button {
+                text-align: center;
+
+                img {
+                    width: 10px;
+                    height: 10px;
+                    margin-left: 20px;
+                }
+
+                button {
+                    background-color: #02AAB0;
+                    font-family: Montserrat;
+                    font-weight: bold;
+                    font-size: 18px;
+                    color: #fff;
+                    border: none;
+                    padding: 5px 30px;
+                    cursor: pointer;
+                    border-radius: 3px;
+
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .some-offers {
+        h2 {
+            padding: 20px 0px;
+            font-size: 28px;
+        }
+
+        .offers-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+
+            .car-container {
+                width: 280px;
+                height: 450px;
+                background-color: #fff;
+                border-radius: 3px;
+                margin: 0px 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .some-offers {
+        .offers-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            align-items: center;
+
+            .car-container {
+                width: 420px;
+                background-color: #fff;
+                border-radius: 3px;
+                margin: 0px 20px;
+                align-self: center;
+                justify-self: center;
+                height: 400px;
+
+                .car-title {
+                    font-family: Montserrat;
+                    font-weight: bold;
+                    font-size: 18px;
+                    text-align: center;
+                    padding: 10px 0px;
+                }
+
+                .price {
+                    text-align: center;
+                    font-family: Montserrat;
+                    font-weight: bold;
+                    font-size: 18px;
+                    color: #02AAB0;
+                    padding-top: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .some-offers {
+        .offers-container {
+            .car-container {
+                width: 320px;
+
+
+                }
+            }
+        }
+}
+
+
+

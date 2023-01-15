@@ -1,0 +1,154 @@
+﻿.pagination {
+    justify-content: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul.pagination li {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    margin: 0px 5px;
+    background-color: #E9FEFF;
+    border: 1px solid #DFE3E8;
+    border-radius: 3px; 
+}
+
+ul.pagination li a {
+    text-decoration: none;
+    color: #212B36;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    padding-top:5px;
+}
+
+ul.pagination li.active a {
+    color: #212B36;
+}
+
+ul.pagination li.active {
+    background-color: #02AAB0;
+}
+
+ul.pagination li a:hover,
+ul.pagination li a.active {
+    color: #212B36;
+}
+
+.page-selection {
+    width: 48px;
+    height: 30px;
+    color: #337ab7;
+}
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+a:hover{
+    cursor: pointer;    
+}
+
+
+.car-not-avalable {
+    background: indianred !important;
+
+    .h2 {
+        color: black;
+    }
+}
+
+
+.car-block {
+    width: 755px;
+    height: 300px;
+    background: linear-gradient(269.31deg, #B7E9EB 0.59%, rgba(88, 166, 169, 0.91) 99.27%);
+    border-radius: 15px;
+    margin-top: 10px;
+
+    .car-content {
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+
+
+        .car-image {
+            width: 600px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+
+            img{
+                width: 100%;
+
+                &:hover{
+                    opacity: 0.9;
+                }
+            }
+        }
+        .car-text {
+            a{
+                text-decoration: none;
+            }
+
+            p {
+                font-family: Montserrat;
+                font-weight: 500;
+                font-size: 18px;
+                margin: 6px 0;
+            }
+
+            width: 80%;
+            margin: 0 auto;
+            padding-right: 30px;
+
+            h2 {
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 24px;
+                color: #000;
+
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+
+            .car-price {
+                background-color: #02AAB0;
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 18px;
+                padding: 8px 10px;
+                text-align: center;
+                color: #fff;
+                border-radius: 3px;
+                width: 110px;
+                margin-bottom: 15px;
+            }
+
+            .data-row {
+                display: flex;
+
+                p:first-child {
+                    width: 76%;
+                    padding-left: 10px;
+                }
+            }
+
+            .data-row:nth-child(even) {
+                background-color: #E9FEFF;
+                border-radius: 3px;
+            }
+        }
+    }
+}
+

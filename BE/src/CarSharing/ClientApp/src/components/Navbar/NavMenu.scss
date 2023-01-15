@@ -1,0 +1,47 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.navbar-expand-sm{
+    padding-top: 20px;
+}
+
+.logo {
+    height: 60px;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-family: Montserrat;
+    font-weight: 300;
+    font-size: 22px;
+    color: black;
+    padding-right: 30px;
+
+    a {
+        color: red;
+    }
+
+    &:focus {
+        color: #02AAB0;
+    }
+}
+
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:hover {
+    color: #02AAB0 !important;
+}
