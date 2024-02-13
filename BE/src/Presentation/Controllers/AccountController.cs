@@ -188,7 +188,7 @@ namespace Presentation.Controllers
                     ViewData["Success"] = "You'll receive an email with a link to reset your password";
                 }
                 else
-                    ViewData["Error"] = "The provided email doesn't exist in Book Sharing System";
+                    ViewData["Error"] = "The provided email doesn't exist in Game Sharing System";
             }
             return View(forgotPassword);
         }

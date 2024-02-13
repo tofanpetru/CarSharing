@@ -72,7 +72,7 @@ function SetToTrue() {
 function validateTitle(txt) {
     let regAdd = /^([\s.]*([^\s.][\s.]*){3,100})$/
     if (regAdd.test(txt) === false) {
-        document.getElementById("err-title").innerHTML = "<span class='warning'>Invalid Book Title!</span>";
+        document.getElementById("err-title").innerHTML = "<span class='warning'>Invalid Game Title!</span>";
         document.getElementById("err-title").style.color = "#FF0000";
         document.getElementById("title").style.border = "none";
         isTitleValid = false;
@@ -204,7 +204,7 @@ function AddNewAuthorToggle() {
     }
     else {
         input.style.display = "none";
-        addButton.textContent = "Add new author";
+        addButton.textContent = "Add new company";
         dragdownAuthors.style.display = "block";
         document.getElementById("err-addedAuthor").innerHTML = "";
         document.getElementById("insertNewAuthor").value = "";

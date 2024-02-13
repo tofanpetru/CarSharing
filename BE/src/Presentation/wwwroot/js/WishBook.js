@@ -49,7 +49,7 @@ function AddNewAuthorWishBookToggle() {
     }
     else {
         input.style.display = "none";
-        addButton.textContent = "Add new author";
+        addButton.textContent = "Add new company";
         dragdownAuthors.style.display = "block";
         document.getElementById("err-addedWishBookAuthor").innerHTML = "";
         document.getElementById("insertNewAuthorWishBook").value = "";
@@ -211,7 +211,7 @@ function EditBook(author, title, id) {
 $('#addWishBookModal').on('hidden.bs.modal', function () {
     resetWishBookModal();
     document.getElementById('insertNewAuthorWishBook').style.display = 'none';
-    document.getElementById('addWishBookAuthorButton').textContent = "Add new author";
+    document.getElementById('addWishBookAuthorButton').textContent = "Add new company";
     document.getElementById('selectAuthorWishBookdiv').style.display = "block";
     document.getElementById("err-addedWishBookAuthor").innerHTML = "";
     document.getElementById("WishBookMessageBoxArea").innerHTML = "";
@@ -269,7 +269,7 @@ function UploadThisBook(author, title) {
         ValidateWishBookFullName(author);
     } else {
         document.getElementById("insertNewAuthor").style.display = "none";
-        document.getElementById("addAuthorButton").textContent = "Add new author";
+        document.getElementById("addAuthorButton").textContent = "Add new company";
         $('#addAuthorButton').attr('disabled', true);
         document.getElementById("selectAuthordiv").style.display = "block";
         document.getElementById("err-addedAuthor").innerHTML = "";

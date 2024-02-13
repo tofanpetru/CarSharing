@@ -42,7 +42,7 @@ namespace Presentation.Controllers
             var book = _bookManager.GetBookDetails(id);
             if(book == null)
             {
-                var errorModel = new ErrorViewModel() { Code = 404, Status = "Not Found", Message = "Book with such id doesn't exist." };
+                var errorModel = new ErrorViewModel() { Code = 404, Status = "Not Found", Message = "Game with such id doesn't exist." };
                 return View("Error", errorModel);
             }
             var user = _userManager.GetCurrentUser();
